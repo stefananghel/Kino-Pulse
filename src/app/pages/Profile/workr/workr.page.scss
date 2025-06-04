@@ -1,0 +1,40 @@
+.icon1{
+    height: 38px;width: 38px;
+    border-radius: 20px;
+    border: 2px solid #E5E9EF;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    
+}
+
+ion-datetime {
+    --background: #FFFFFF;
+    --background-rgb: 255, 255, 255;
+    --wheel-highlight-background: #F1F4F8;
+    --wheel-fade-background-rgb: 255, 255, 255;
+    color: var(--ion-color-dis);
+  }
+
+  ion-datetime::part(wheel-item) {
+    color: var(--ion-color-dis);
+  }
+
+  .ios ion-datetime{
+    --background:var(--ion-color-bg);
+    --wheel-fade-background:var(--ion-color-bg);
+    --background-rgb: 255,255,255;
+    --wheel-highlight-background: rgb(255, 255, 255);
+  }
+  .ios ion-datetime::part(wheel-item active) {
+    color: var(--ion-color-primary);
+  }
+  .ios ion-datetime::part(wheel-item) {
+    color: var(--ion-color-txt);
+  }
+  
+//   ion-datetime::part(wheel-item) {
+//     color: var(--ion-color-dis1)
+//   }
+  
+  

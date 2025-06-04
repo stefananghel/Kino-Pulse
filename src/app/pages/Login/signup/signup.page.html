@@ -1,0 +1,44 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <div class="ion-text-center" style="margin-top: 50px;">
+    <ion-text class="s26" >Sing Up</ion-text>
+  </div>
+
+  <div class="input" style="margin-top: 20px;">
+    <ion-input type="text" placeholder="Full Name" style="flex:1;"></ion-input>
+  </div>
+
+  <div class="input" style="margin-top: 15px;">
+    <ion-input type="email" placeholder="Email" style="flex:1;"></ion-input>
+  </div>
+
+  <div class="input" style="margin-top: 15px;">
+    <ion-input type="tel" placeholder="Phone" style="flex:1;"></ion-input>
+  </div>
+
+  <div class="input" style="margin-top: 15px;">
+    <ion-input type="password" placeholder="Password" style="flex:1;"></ion-input>
+  </div>
+
+  <div  class="list" style="margin-top: 10px;">
+    <ion-checkbox></ion-checkbox>
+    <ion-text class="r12" style="color: var(--ion-color-dis1);margin-left: 10px;">By continuing you accept our Privacy Policy</ion-text>
+  </div>
+
+  <ion-button expand="block" routerLink="/otp" style="margin-top: 25px;margin-bottom: 15px;">Sign Up</ion-button>
+
+  <div class="ion-text-center" style="margin-top: 50px;">
+    <ion-text class="m19" >Sign in with</ion-text>
+  </div>
+
+  <div class="list" style="justify-content: center;margin-top: 15px;">
+    <ion-img src="../../../../assets/image/a1.svg" style="height: 30px;width: 25px;"></ion-img>
+    <ion-img src="../../../../assets/image/a2.svg" style="height: 30px;width: 30px;margin: 0 15px;"></ion-img>
+    <ion-img src="../../../../assets/image/a3.svg" style="height: 30px;width: 30px;"></ion-img>
+  </div>
+
+  <div class="list" style="justify-content: center;margin-top: 40px;margin-bottom: 20px;">
+    <ion-text class="r13" style="color: var(--ion-color-dis);">Don't have an account? </ion-text>
+    <ion-text routerLink="/login" class="m13" style="color: var(--ion-color-primary);margin-left: 5px;">Sign In</ion-text>
+  </div>
+</ion-content>

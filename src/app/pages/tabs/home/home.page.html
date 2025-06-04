@@ -1,0 +1,47 @@
+<ion-header [translucent]="false" style="box-shadow: none;background-color: var(--ion-color-bg);">
+  <ion-toolbar color="bg" style="--border-width: 0 0;">
+    <div  class="column" style="align-items: flex-start;" >
+      <ion-text class="s26">
+        Hi {{ JSON.parse(localStorage.getItem('user') || '{}').firstname || 'Guest' }}!
+      </ion-text>
+    </div>
+    <ion-buttons routerLink="/notification" slot="end" class="">
+      <ion-icon size="" name="notifications-outline" style="font-size: 27px; color: var(--ion-color-primary);"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding" style="background-image: url('../../../../assets/image/home.png');
+ background-size: cover; background-position-x: center; background-position-y: -60px; background-repeat: no-repeat; width: 100%; height: 100%;
+ ">
+    <!--The content below is only a placeholder and can be replaced.-->
+    <div style="display: fl; justify-content: center; margin-top: 0; color: #fff; padding: 0px; 
+    ">
+
+      <apx-chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [xaxis]="chartOptions.xaxis"
+        [title]="chartOptions.title"
+      ></apx-chart>
+    </div>
+    
+    <div style="display: flex; justify-content: center; margin-top: 0; color: #fff; padding: 0px; 
+    ">
+      <ion-text class="" style="font-size: 46px; font-weight: 600; color: #fff;">GET STARTED</ion-text>
+    </div>
+    <ion-button routerLink="/tabs/training" expand="block" style="margin: 20px 0;">Start Workout</ion-button>
+
+<!--  <div class="box" style="position: fixed; bottom: 66px; background-color: var(&#45;&#45;ion-color-bg); padding: 10px;">-->
+<!--    <ion-text class="s26">Upper Body Workout</ion-text>-->
+
+<!--    <div style="margin-top: 15px;">-->
+<!--      <ion-text class="r15">Resistance training, also known as strength training, is an essential component of any fitness routine, especially for your upper body</ion-text>-->
+<!--    </div>-->
+<!--    <ion-button id="open-modal" expand="block" style="margin: 20px 0;">Start Assessment</ion-button>-->
+
+<!--  </div>-->
+
+
+</ion-content>

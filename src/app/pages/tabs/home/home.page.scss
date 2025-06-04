@@ -1,0 +1,40 @@
+.icon{
+    height: 38px;
+    width: 38px;
+    border-radius: 7px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border: 1px solid #E5E9EF;
+}
+
+.icon1{
+    height: 77px;
+    width: 77px;
+    border-radius: 7px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border: 1px solid #E5E9EF;
+    flex-direction: column;
+}
+
+.div1{
+    background: url(../../../../assets/image/s5.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 153px;
+    width: 230px;
+}
+.div2{
+    background: url(../../../../assets/image/s6.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 153px;
+    width: 230px;
+}
+
+#chart {
+  max-width: 450px;
+  margin: 35px auto;
+}

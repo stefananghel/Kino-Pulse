@@ -1,0 +1,69 @@
+<ion-header [translucent]="false" style="box-shadow: none;background-color: var(--ion-color-input);">
+  <ion-toolbar color="input" style="--border-width: 0 0;">
+    <ion-buttons slot="start" routerLink="/tabs/profile">
+      <ion-icon name="arrow-back" style="font-size: 24px;color: var(--ion-color-txt);"></ion-icon>
+    </ion-buttons>
+    <div class="ion-text-center" >
+      <ion-title class="m16" >My workouts</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding" style="background-color: var(--ion-color-input);">
+
+  <div class="list" style="height: 38px;border-radius: 20px;background-color: #FFFFFF;padding: 0 5px;">
+    <div style="height: 29px;background-color: var(--ion-color-primary);border-radius: 20px;align-items: center;justify-content: center;display: flex;flex:1">
+      <ion-text class="m13" style="color: #FFFFFF;">History</ion-text>
+    </div>
+    <div style="flex:1;justify-content: center;display: flex;">
+      <ion-text class="r13" style="color: var(--ion-color-dis);">Last</ion-text>
+    </div>
+    <div style="flex:1;justify-content: center;display: flex;">
+      <ion-text class="r13" style="color: var(--ion-color-dis);">Favorites</ion-text>
+    </div>
+  </div>
+
+  <div class="list1" style="margin-top: 20px;">
+    <ion-text class="r12" style="color: var(--ion-color-dis);">November, 15 2021</ion-text>
+    <ion-text class="r12" style="color: var(--ion-color-dis);">1 workout, 32 minutes</ion-text>
+  </div>
+
+  <div routerLink="/cworkout2" class="box1 list" style="margin-top: 15px;">
+    <ion-img src="../../../../assets/image/a13.svg" style="height: 61px;width: 61px;"/>
+    <div style="margin-left: 15px;flex: 1;">
+      <ion-text class="m15">Full Body Yoga</ion-text>
+      <div >
+        <ion-text class="r10" style="color: var(--ion-color-dis);">08:30 - 09:15</ion-text>
+      </div>
+    </div>
+    <ion-icon name="checkmark-circle" color="primary" style="font-size: 20px;"></ion-icon>
+  </div>
+
+  <div class="list1" style="margin-top: 20px;">
+    <ion-text class="r12" style="color: var(--ion-color-dis);">November, 19 2021</ion-text>
+    <ion-text class="r12" style="color: var(--ion-color-dis);">2 workout, 55 minutes</ion-text>
+  </div>
+
+  <div routerLink="/cworkout2" class="box1 list" style="margin-top: 15px;">
+    <ion-img src="../../../../assets/image/a14.png" style="height: 61px;width: 61px;"/>
+    <div style="margin-left: 15px;flex: 1;">
+      <ion-text class="m15">Full Body Fast</ion-text>
+      <div >
+        <ion-text class="r10" style="color: var(--ion-color-dis);">08:30 - 09:15</ion-text>
+      </div>
+    </div>
+    <ion-icon name="checkmark-circle" color="primary" style="font-size: 20px;"></ion-icon>
+  </div>
+
+  <div routerLink="/cworkout2" class="box1 list" style="margin-top: 15px;">
+    <ion-img src="../../../../assets/image/a16.png" style="height: 61px;width: 61px;"/>
+    <div style="margin-left: 15px;flex: 1;">
+      <ion-text class="m15">Glutes & Abs</ion-text>
+      <div >
+        <ion-text class="r10" style="color: var(--ion-color-dis);">14:30 - 15:15</ion-text>
+      </div>
+    </div>
+    <ion-icon name="checkmark-circle" color="primary" style="font-size: 20px;"></ion-icon>
+  </div>
+
+</ion-content>

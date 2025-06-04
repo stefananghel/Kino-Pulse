@@ -1,0 +1,30 @@
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  
+  <div class="ion-text-center" style="margin-top: 70px;">
+    <ion-text class="s26" >Phone verification</ion-text>
+  </div>
+  <div class="ion-text-center" style="margin-top: 10px;">
+    <ion-text class="r15" >We sent a code to your number <ion-text class="r15" >9(173)605-76-05</ion-text><ion-text class="m14" style="color: var(--ion-color-primary);" >Change</ion-text></ion-text>
+  </div>
+
+  <div style="margin-top:40px;justify-content: center;display: flex;">
+    <ng-otp-input #ngOtpInput
+      (onInputChange)="onOtpChange($event)"
+      [config]="otpConfig">
+    </ng-otp-input>
+  </div>
+
+  <div class="ion-text-center" style="margin-top: 20px;">
+    <ion-text class="r15" >Don't receive your code?  <ion-text class="m15" style="color: #F25D29;" >Resend</ion-text></ion-text>
+  </div>
+
+</ion-content>
+
+<ion-footer [translucent]="false" style="box-shadow: none;background-color: var(--ion-color-bg);">
+  <ion-toolbar color="bg" style="padding: 10px 15px; --border-width: 0 0;">
+    
+    <ion-button routerLink="/st1" expand="block" >Next</ion-button>
+
+  </ion-toolbar>
+</ion-footer>

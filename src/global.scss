@@ -1,0 +1,489 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+@import "./theme/fonts.scss";
+
+* {
+  // font-family: 'Times New Roman', Times, serif;
+  font-family: Poppins-Regular;
+  font-family: Poppins-Bold;
+  font-family: Poppins-Medium;
+  font-family: Poppins-SemiBold;
+}
+
+ion-content {
+  // overwrite inline styles
+  --offset-bottom: auto !important;
+  --overflow: hidden;
+  background: var(--ion-color-bg);
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// .ios ion-toolbar {
+//   --padding-top: 15px;
+//   --background: var(--ion-color-bg);
+//   // --color:#151517;
+// }
+// ion-toolbar {
+//   --background: var(--ion-color-bg);
+//   // --color:#151517;
+// }
+
+.ios ion-toolbar {
+  // padding: 10px 15px;
+  --padding-top: 5px;
+  --padding-bottom: 0;
+  --padding-start: 15px;
+  --padding-end: 15px;
+  --background: var(--ion-color-bg);
+  // --color:#151517;
+}
+.md ion-toolbar {
+  --background: var(--ion-color-bg);
+  padding: 10px 15px;
+  --padding-top: 10px;
+  // --color:#151517;
+}
+
+.input {
+  --highlight-height: 0;
+  background-color: #F8FAFC;
+  padding-top: 0;
+  padding: 0 20px;
+  height: 53px;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  border-radius: 23px;
+  ion-icon {
+    font-size: 24px;
+    color: #F9F9F9;
+  }
+  ion-input {
+    font-size: 14px;
+    font-family: Poppins-Regular;
+    color: #404B52;
+    --placeholder-color: #404B52;
+    --highlight-color-focused: none;
+  }
+}
+.input1 {
+  --highlight-height: 0;
+  border: 1px solid #DAE0E8;
+  padding-top: 0;
+  padding: 0 12px;
+  height: 47px;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  border-radius: 7px;
+  ion-icon {
+    font-size: 20px;
+    color: #404B52;
+  }
+  ion-input {
+    margin-left: 12px;
+    font-size: 14px;
+    font-family: Poppins-Regular;
+    color: #F9F9F9;
+    --placeholder-color: #404B52;
+    --highlight-color-focused: none;
+  }
+}
+
+ion-button {
+  height: 53px;
+  --box-shadow: none;
+  text-transform: initial;
+  font-size: 16px;
+  letter-spacing: 0;
+  --border-radius: 24px;
+  font-family: Poppins-Medium;
+}
+
+.box {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.box1 {
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.box2 {
+  background-color: #FFFFFF;
+  border-radius: 7px;
+  padding: 15px;
+}
+
+.obox{
+  border: 1px solid #DAE0E8;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.obox1{
+  border: 1px solid #DAE0E8;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.list {
+  flex-direction: row;
+  align-items: center;
+  display: flex;
+}
+
+.list1 {
+  flex-direction: row;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list2 {
+  flex-direction: row;
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+  display: flex;
+}
+
+.lines {
+  border: 1px solid #F1F4F8;
+  margin: 15px 0px;
+}
+
+.chip {
+  border-radius: 20px;
+  height: 38px;
+  padding: 0 20px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border: 1px solid #E5E9EF;
+}
+
+.rbsheet {
+  --border-radius: 20px;
+  height: auto;
+  background-color: transparent;
+  ion-modal::part(content) {
+    backdrop-filter: blur(12px);
+  }
+  ion-content {
+    --background: var(--ion-color-bg);
+  }
+}
+
+.scroll {
+  flex-wrap: nowrap;
+  overflow-x: scroll !important;
+  overflow-y: hidden;
+  align-items: center;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.title {
+  font-size: 30px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Medium;
+}
+
+.apptitle {
+  font-size: 24px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Medium;
+}
+
+.subtitle {
+  font-size: 20px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Medium;
+}
+
+.m36{
+  font-size: 36px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Medium;
+}
+
+.s26 {
+  font-size: 26px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-SemiBold;
+}
+
+.r8 {
+  font-size: 8px;
+  color: var(--ion-color-dis);
+  font-family: Poppins-Regular;
+}
+
+.r10 {
+  font-size: 10px;
+  color: var(--ion-color-dis);
+  font-family: Poppins-Regular;
+}
+
+.m10 {
+  font-size: 10px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Medium;
+}
+
+.r11 {
+  font-size: 11px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Regular;
+}
+
+.m11 {
+  font-size: 11px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Medium;
+}
+
+.b11 {
+  font-size: 11px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Bold;
+}
+
+.s11 {
+  font-size: 11px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-SemiBold;
+}
+
+.r12 {
+  font-size: 12px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Regular;
+}
+
+.m12 {
+  font-size: 12px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Medium;
+}
+
+.b12 {
+  font-size: 12px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Bold;
+}
+
+.s12 {
+  font-size: 12px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-SemiBold;
+}
+
+.r13 {
+  font-size: 13px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Regular;
+}
+
+.m13 {
+  font-size: 13px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Medium;
+}
+
+.b13 {
+  font-size: 13px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Bold;
+}
+
+.s13 {
+  font-size: 13px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-SemiBold;
+}
+
+.r14 {
+  font-size: 14px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Regular;
+}
+
+.m14 {
+  font-size: 14px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Medium;
+}
+
+.b14 {
+  font-size: 14px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Bold;
+}
+
+.s14 {
+  font-size: 14px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-SemiBold;
+}
+
+.r15 {
+  font-size: 15px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Regular;
+}
+
+.m15 {
+  font-size: 15px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Medium;
+}
+
+.b15 {
+  font-size: 15px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Bold;
+}
+
+.s15 {
+  font-size: 15px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-SemiBold;
+}
+
+.b16 {
+  font-size: 16px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Bold;
+}
+
+.r16 {
+  font-size: 16px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Regular;
+}
+
+.m16 {
+  font-size: 16px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Medium;
+}
+
+.s16 {
+  font-size: 16px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-SemiBold;
+}
+
+.r17 {
+  font-size: 17px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Regular;
+}
+
+.m17 {
+  font-size: 17px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Medium;
+}
+
+.b17 {
+  font-size: 17px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Bold;
+}
+
+.s17 {
+  font-size: 17px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-SemiBold;
+}
+
+.b18 {
+  font-size: 18px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Bold;
+}
+
+.r18 {
+  font-size: 18px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Regular;
+}
+
+.m18 {
+  font-size: 18px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Medium;
+}
+
+.s18 {
+  font-size: 18px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-SemiBold;
+}
+
+.b19 {
+  font-size: 19px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Bold;
+}
+
+.r19 {
+  font-size: 19px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Regular;
+}
+
+.m19 {
+  font-size: 19px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-Medium;
+}
+
+.s19 {
+  font-size: 19px;
+  color: var(--ion-color-txt);
+  font-family: Poppins-SemiBold;
+}
+
+.text1 {
+  font-size: 16px;
+  margin-top: -8px;
+  color: #858494;
+  font-family: Poppins-Regular;
+}

@@ -1,0 +1,105 @@
+<ion-header [translucent]="false" style="box-shadow: none;background-color: var(--ion-color-bg);">
+  <ion-toolbar color="bg" style="--border-width: 0 0;">
+    <ion-buttons slot="start" routerLink="/tabs" >
+      <ion-icon name="arrow-back" style="font-size: 24px;color: var(--ion-color-txt);"></ion-icon>
+    </ion-buttons>
+    <ion-title class="m15" style="text-align: center;">All exercises</ion-title>
+  </ion-toolbar>
+  <div class="input1" style="margin: 5px 15px;">
+    <ion-icon name="search-outline" style="font-size: 20px;color: var(--ion-color-dis);"/>
+    <ion-input placeholder="Search something" type="text"/>
+  </div>
+  <div class="scroll list" style="margin: 10px 15px;">
+    <div *ngFor="let item of items; let i = index;"
+      (click)="onFocus(i)"
+      [ngStyle]="{'background-color': item.focused ? 'var(--ion-color-primary)' : 'var(--ion-color-bg)',
+                  'border':item.focused?'none':'1px solid #E5E9EF',
+                  'margin-right': item.focused ? '7px' : '7px',
+                  'border-radius': '30px',
+                  'padding': '6px 18px',}"
+    >
+      <ion-text [style.color]="item.focused ? '#FFFFFF' : 'var(--ion-color-dis)'" class="m11">{{ item.label }}</ion-text>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <div routerLink="/wdetail" class="obox1 list" >
+    <ion-img src="../../../../assets/image/s39.png" style="height: 60px;width: 60px;" />
+    <div style="margin-left: 10px;flex: 1;">
+      <ion-text class="m15">Cobra Stretch</ion-text>
+      <div>
+        <ion-text class="r13" style="color: #404B52;">0:30</ion-text>
+      </div>
+    </div>
+    <ion-icon name="information-circle-outline" style="font-size: 23px;color: #CAD0D8;"/>
+  </div>
+
+  <div routerLink="/wdetail" class="obox1 list" style="margin-top: 15px;">
+    <ion-img src="../../../../assets/image/s40.png" style="height: 60px;width: 60px;" />
+    <div style="margin-left: 10px;flex: 1;">
+      <ion-text class="m15">Plank Ups</ion-text>
+      <div>
+        <ion-text class="r13" style="color: #404B52;">0:30</ion-text>
+      </div>
+    </div>
+    <ion-icon name="information-circle-outline" style="font-size: 23px;color: #CAD0D8;"/>
+  </div>
+
+  <div routerLink="/wdetail" class="obox1 list" style="margin-top: 15px;">
+    <ion-img src="../../../../assets/image/s41.png" style="height: 60px;width: 60px;" />
+    <div style="margin-left: 10px;flex: 1;">
+      <ion-text class="m15">Plank Reaches</ion-text>
+      <div>
+        <ion-text class="r13" style="color: #404B52;">0:30</ion-text>
+      </div>
+    </div>
+    <ion-icon name="information-circle-outline" style="font-size: 23px;color: #CAD0D8;"/>
+  </div>
+
+  <div routerLink="/wdetail" class="obox1 list" style="margin-top: 15px;">
+    <ion-img src="../../../../assets/image/s42.png" style="height: 60px;width: 60px;" />
+    <div style="margin-left: 10px;flex: 1;">
+      <ion-text class="m15">Skater Squat Right</ion-text>
+      <div>
+        <ion-text class="r13" style="color: #404B52;">0:30</ion-text>
+      </div>
+    </div>
+    <ion-icon name="information-circle-outline" style="font-size: 23px;color: #CAD0D8;"/>
+  </div>
+
+  <div routerLink="/wdetail" class="obox1 list" style="margin-top: 15px;">
+    <ion-img src="../../../../assets/image/s43.png" style="height: 60px;width: 60px;" />
+    <div style="margin-left: 10px;flex: 1;">
+      <ion-text class="m15">Squat jump</ion-text>
+      <div>
+        <ion-text class="r13" style="color: #404B52;">0:30</ion-text>
+      </div>
+    </div>
+    <ion-icon name="information-circle-outline" style="font-size: 23px;color: #CAD0D8;"/>
+  </div>
+
+  <div routerLink="/wdetail" class="obox1 list" style="margin-top: 15px;">
+    <ion-img src="../../../../assets/image/s44.png" style="height: 60px;width: 60px;" />
+    <div style="margin-left: 10px;flex: 1;">
+      <ion-text class="m15">Lung Jumps Atlernated</ion-text>
+      <div>
+        <ion-text class="r13" style="color: #404B52;">0:30</ion-text>
+      </div>
+    </div>
+    <ion-icon name="information-circle-outline" style="font-size: 23px;color: #CAD0D8;"/>
+  </div>
+
+  <div routerLink="/wdetail" class="obox1 list" style="margin-top: 15px;margin-bottom: 15px;">
+    <ion-img src="../../../../assets/image/s45.png" style="height: 60px;width: 60px;" />
+    <div style="margin-left: 10px;flex: 1;">
+      <ion-text class="m15">Cobra Stretch</ion-text>
+      <div>
+        <ion-text class="r13" style="color: #404B52;">0:30</ion-text>
+      </div>
+    </div>
+    <ion-icon name="information-circle-outline" style="font-size: 23px;color: #CAD0D8;"/>
+  </div>
+ 
+</ion-content>

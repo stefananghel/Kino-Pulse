@@ -1,0 +1,55 @@
+<ion-header [translucent]="false" style="box-shadow: none;">
+  <ion-toolbar color="bg" style="--border-width: 0 0;">
+    <ion-buttons slot="start" routerLink="/st5" >
+      <ion-icon name="arrow-back" style="font-size: 24px;color: var(--ion-color-txt);"></ion-icon>
+    </ion-buttons>
+    <ion-title class="m15" style="color: var(--ion-color-primary);text-align: center;">Step 6 of 7</ion-title>
+    <ion-buttons slot="end">
+      <ion-text class="r15" style="color: #404B52;">Skip</ion-text>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  
+  <div class="ion-text-center" >
+    <ion-text class="s26" >Choose training level</ion-text>
+  </div>
+
+  <div class="obox" style="border-color: var(--ion-color-primary);margin-top: 20px;padding: 16px 22px;">
+    <ion-text class="m15">Beginner</ion-text>
+    <div>
+      <ion-text class="r13" style="color: #404B52;">I want to start training</ion-text>
+    </div>
+  </div>
+
+  <div class="obox" style="margin-top: 15px;padding: 16px 22px;">
+    <ion-text class="m15">Irregular training</ion-text>
+    <div>
+      <ion-text class="r13" style="color: #404B52;">I train 1-2 times a week</ion-text>
+    </div>
+  </div>
+
+  <div class="obox" style="margin-top: 15px;padding: 16px 22px;">
+    <ion-text class="m15">Medium</ion-text>
+    <div>
+      <ion-text class="r13" style="color: #404B52;">I train 3-4 times a week</ion-text>
+    </div>
+  </div>
+
+  <div class="obox" style="margin-top: 15px;padding: 16px 22px;">
+    <ion-text class="m15">Advanced</ion-text>
+    <div>
+      <ion-text class="r13" style="color: #404B52;">I train more than 5 times a week</ion-text>
+    </div>
+  </div>
+
+</ion-content>
+
+<ion-footer [translucent]="false" style="box-shadow: none;background-color: var(--ion-color-bg);">
+  <ion-toolbar color="bg" style="padding: 10px 15px; --border-width: 0 0;">
+    
+    <ion-button routerLink="/st7" expand="block" >Continue</ion-button>
+
+  </ion-toolbar>
+</ion-footer>

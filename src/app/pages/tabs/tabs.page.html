@@ -1,0 +1,31 @@
+<ion-tabs #tabs (ionTabsDidChange)="setCurrentTab();" >
+
+  <!-- -------------------Custom Tabs with fab button------------------------------- -->
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home">
+      <ion-img [src]=" selectTab == 'home' ? '../../../assets/image/t1f.png' : '../../../assets/image/t1.png'" style="height: 24px;width: 24px;padding-bottom: 5px;"/>
+      Home
+    </ion-tab-button>
+    <ion-tab-button tab="training" class="search">
+      <ion-img [src]=" selectTab == 'training' ? '../../../assets/image/t2f.png' : '../../../assets/image/t2.png'" style="height: 24px;width: 24px;padding-bottom: 5px;"/>
+      Training
+    </ion-tab-button>
+
+    <ion-tab-button tab="activity" class="wishlist">
+      <ion-img [src]=" selectTab == 'activity' ? '../../../assets/image/t3f.png' : '../../../assets/image/t3.png'" style="height: 24px;width: 24px;padding-bottom: 5px;"/>
+      Activity
+    </ion-tab-button>
+    <ion-tab-button tab="profile">
+      <ion-img [src]=" selectTab == 'profile' ? '../../../assets/image/t4f.png' : '../../../assets/image/t4.png'" style="height: 24px;width: 24px;padding-bottom: 5px;"/>
+     Profile
+    </ion-tab-button>
+
+  </ion-tab-bar>
+
+</ion-tabs>
+<ion-fab *ngIf="selectTab === 'training' || selectTab === 'activity'" slot="fixed" vertical="bottom" horizontal="end" style="margin-bottom: 70px;">
+  <ion-fab-button>
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

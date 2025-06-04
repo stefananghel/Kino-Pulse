@@ -1,0 +1,76 @@
+<ion-content [fullscreen]="true" class="ion-padding" >
+
+  <div class="top">
+    <ion-text class="s26">Custom Workout</ion-text>
+  </div>
+  <div style="margin-top: 5px;">
+    <ion-text class="r15" >Log each workout you complete to keep track of tour fitness program!</ion-text>
+  </div>
+
+  <div class="input1" style="margin-top: 20px;"> 
+    <ion-input type="text" placeholder="Workout name" style="flex:1;"></ion-input>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <ion-text class="s26">Choose Level</ion-text>
+  </div>
+
+  <div class="obox" style="margin-top: 20px;padding:15px 20px;border-color: var(--ion-color-primary);">
+    <ion-text class="m15">Beginner</ion-text>
+    <div>
+      <ion-text class="r13" style="color: var(--ion-color-dis);">I want to start training</ion-text>
+    </div>
+  </div>
+
+  <div class="obox" style="margin-top: 15px;padding:15px 20px;">
+    <ion-text class="m15">Irregular training</ion-text>
+    <div>
+      <ion-text class="r13" style="color: var(--ion-color-dis);">I train 1-2 times a week</ion-text>
+    </div>
+  </div>
+
+  <div class="obox" style="margin-top: 15px;padding:15px 20px;">
+    <ion-text class="m15">Medium</ion-text>
+    <div>
+      <ion-text class="r13" style="color: var(--ion-color-dis);">I train 3-5 times a week</ion-text>
+    </div>
+  </div>
+
+  <div class="obox" style="margin-top: 15px;padding:15px 20px;">
+    <ion-text class="m15">Advanced</ion-text>
+    <div>
+      <ion-text class="r13" style="color: var(--ion-color-dis);">I train more than 5 times a week</ion-text>
+    </div>
+  </div>
+
+  <div class="list" style="margin-top: 30px;">
+    <ion-text class="m15" style="flex:1">Choose Equipment</ion-text>
+    <ion-text class="r13" style="color: var(--ion-color-dis);" >2 Dumbells, Mat </ion-text>
+    <ion-icon name="chevron-forward" color="arrow" style="font-size: 20px;margin-left: 5px;"></ion-icon>
+  </div>
+
+  <div class="lines" style="margin: 20px 0;"></div>
+
+  <div class="list">
+    <ion-text class="m15" style="flex:1">Choose Focus Area</ion-text>
+    <ion-text class="r13" style="color: var(--ion-color-dis);" >Legs, Core muscles</ion-text>
+    <ion-icon name="chevron-forward" color="arrow" style="font-size: 20px;margin-left: 5px;"></ion-icon>
+  </div>
+
+  <div class="lines" style="margin: 20px 0;"></div>
+
+  <div class="list">
+    <ion-text class="m15" style="flex:1">Includes Warm-Up</ion-text>
+    <ion-toggle [checked]="true"></ion-toggle>
+  </div>
+
+  <div class="lines" style="margin: 20px 0;"></div>
+
+  <div class="list">
+    <ion-text class="m15" style="flex:1">Includes Stretching</ion-text>
+    <ion-toggle [checked]="true"></ion-toggle>
+  </div>
+
+  <ion-button expand="block" routerLink="/ptraining" style="margin-top: 30px;margin-bottom: 20px;">Create Workout</ion-button>
+
+</ion-content>
