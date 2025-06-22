@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MusicpPageRoutingModule } from './musicp-routing.module';
+import { CameraRoutingModule } from './camera-routing.module';
 
-import { MusicpPage } from './musicp.page';
+import { Camera } from './camera.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MusicpPageRoutingModule
+    CameraRoutingModule
   ],
-  declarations: [MusicpPage]
+  declarations: [Camera]
 })
-export class MusicpPageModule {}
+export class CameraModule {}

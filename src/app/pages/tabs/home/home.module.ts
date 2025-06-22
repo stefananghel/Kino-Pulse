@@ -8,15 +8,16 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
 import {ChartComponent} from "ng-apexcharts";
+import { NgApexchartsModule } from "ng-apexcharts";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        IonicModule,
-        HomePageRoutingModule,
-        ChartComponent
-    ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    HomePageRoutingModule,
+    NgApexchartsModule
+  ],
   declarations: [HomePage]
 })
 export class HomePageModule {}

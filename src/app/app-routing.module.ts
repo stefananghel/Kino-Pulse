@@ -21,8 +21,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/Profile/notification/notification.module').then( m => m.NotificationPageModule)
   },
   {
-    path: 'musicp',
-    loadChildren: () => import('./pages/Profile/musicp/musicp.module').then( m => m.MusicpPageModule)
+    path: 'camera',
+    loadChildren: () => import('./pages/Profile/camera/camera.module').then( m => m.CameraModule)
   },
   {
     path: 'weight',
