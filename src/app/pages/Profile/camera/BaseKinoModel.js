@@ -9,7 +9,7 @@ import {
 } from "./constants"
 import { compareAngles, flashPage, playAudio, playAudioElement } from "./util"
 import { drawArch } from "./drawUtil"
-import React from "react"
+ 
 
 window.initialPause = 0
 export class BaseKinoModel {
@@ -273,26 +273,26 @@ export class BaseKinoModel {
   handleVideoSize() {
     this.videoConfigured = true
 
-    const isLandscape =
-      screen.orientation?.type?.startsWith("landscape") ||
-      window.innerWidth > window.innerHeight
+    const videoTrack = this.cameraStream && this.cameraStream.getVideoTracks()[0]
+    let settings = videoTrack ? videoTrack.getSettings() : {}
+    let aspectRatio =
+      settings.aspectRatio ||
+      (settings.width && settings.height
+        ? settings.width / settings.height
+        : window.innerWidth / window.innerHeight)
 
-    // console.log("Native width", this.nativeWidth);
-    // console.log("Native height", this.nativeHeight);
-
-    if (isLandscape) {
-      console.log("Landscape")
-      this.nativeWidth = 640
-      this.nativeHeight = 360
+    // For mobile: fill the screen in portrait, for desktop: fill in landscape
+    if (window.innerHeight > window.innerWidth) {
+      // Portrait (mobile)
+      this.nativeHeight = window.innerHeight
+      this.nativeWidth = Math.round(window.innerHeight * aspectRatio)
     } else {
-      console.log("Portrait")
-      this.nativeWidth = 360
-      this.nativeHeight = 640
+      // Landscape (desktop/tablet)
+      this.nativeWidth = window.innerWidth
+      this.nativeHeight = Math.round(window.innerWidth / aspectRatio)
     }
-
-    // console.log("Native width", this.nativeWidth);
-    // console.log("Native height", this.nativeHeight);
-
+ 
+    // Set canvas size to match video aspect ratio, but do NOT set video element's width/height
     this.canvasElement.width = this.nativeWidth * 3
     this.canvasElement.height = this.nativeHeight * 3
     this.canvasWidth = this.canvasElement.width
