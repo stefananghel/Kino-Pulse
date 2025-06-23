@@ -30,7 +30,8 @@
 }
 
 .input_video {
-  display: none;
+  height: 0.125rem; /* Equivalent to h-0.5 in Tailwind */
+  opacity: 0; /* Equivalent to opacity-0 in Tailwind */
 }
 
 .output_canvas {
