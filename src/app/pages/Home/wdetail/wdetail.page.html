@@ -21,7 +21,7 @@
   </ion-toolbar>
 
   <div class="header-image-container">
-    <img [src]="program?.program_thumbnail" [alt]="program?.title">
+    <img [src]="program?.programThumbnail" [alt]="program?.title">
     <!-- <div class="gradient-overlay"></div> -->
   </div>
 
@@ -37,15 +37,12 @@
     <!-- <ion-text routerLink="/aexercise" class="m14" style="color: #9299A3;">View All</ion-text> -->
   </div>
 
-  <div *ngFor="let exercise of program?.exercises" class="obox1 list">
+  <div *ngFor="let exercise of program?.exercises" class="obox1 list" (click)="openExerciseModal(exercise)">
     <img [src]="exercise.thumbnail" style="height: 90px;width: 90px; border-radius: 10px;" [alt]="exercise.name"/>
     <div style="margin-left: 10px;flex: 1; ">
       <ion-text class="m15">{{exercise.name}}</ion-text>
-      
+
       <div style="">
-        <!-- <ion-text class="r11" style="color: #404B52; vertical-align: text-top;">
-          {{exercise.description}}
-        </ion-text> -->
         <div style="margin-top: 5px;background-color: var(--ion-color-primary);width: 36px;height: 18px;align-items: center;justify-content: center;display: flex;border-radius: 8px;">
           <ion-text class="r10" style="color: #FFFFFF;">08:30</ion-text>
         </div>
@@ -58,7 +55,7 @@
   </div>
 
 
-  
+
   <ion-modal
   cssClass="rbsheet"
   trigger="open-modal"
@@ -75,7 +72,7 @@
       </div>
     </ion-toolbar>
   <ion-content class="ion-padding-start ion-padding-end" >
-   
+
   </ion-content>
 </ng-template>
 </ion-modal>

@@ -9,10 +9,12 @@ export class ProgramsService {
   public progress = 0;
   public programs: any[] = [];
 
-  private apiUrl = 'https://test.kino.care/api/programs';
+
+  private apiUrl = `https://test.kino.care/api/fitness/patients/${JSON.parse(localStorage.getItem('user') || '{}').id}/programs?status=open&offset=0&limit=10`;
   private authHeader = "Basic " + btoa(localStorage.getItem('auth') + ":" + "test");
 
   getPrograms(refresh: boolean = false): any {
+    console.log(localStorage.getItem('auth'));
     // If programs are already fetched and not refreshing, return the cached programs
     if (this.programs.length > 0 && !refresh) {
       console.log('programs from cache', this.programs);
@@ -27,8 +29,7 @@ export class ProgramsService {
     })
       .then(response => response.json())
       .then(data => {
-        this.programs = data;
-        console.log('programs from fetch', this.programs);
+        this.programs = data.data.items || [];
         return this.programs;
       })
       .catch(error => {

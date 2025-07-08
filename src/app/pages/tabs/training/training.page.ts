@@ -31,13 +31,14 @@ export class TrainingPage implements OnInit {
 
   ngOnInit() {
     this.programsService.getPrograms(false).then((programs: any[]) => {
+      console.log(programs);
       this.programs = programs;
     });
 
     this.newsService.getNews().then((news: any[]) => {
       this.news = news || [];
       this.aboutAssessmentArticle = this.news.news.find((item: any) => item.title === 'How assessment works');
-      console.log(this.aboutAssessmentArticle.description);
+      // console.log(this.aboutAssessmentArticle.description);
     });
   }
 
