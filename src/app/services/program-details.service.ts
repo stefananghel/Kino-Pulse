@@ -10,8 +10,7 @@ export class ProgramDetailsService {
   private cachedProgramDetails: { [key: number]: any } = {};
 
   getProgramDetails(programId: number, refresh: boolean = false): Promise<any> {
-    console.log(localStorage.getItem('auth'));
-
+ 
     // If program details are already fetched and not refreshing, return the cached details
     if (this.cachedProgramDetails[programId] && !refresh) {
       console.log('program details from cache', this.cachedProgramDetails[programId]);

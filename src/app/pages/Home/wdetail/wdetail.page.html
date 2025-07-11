@@ -37,7 +37,7 @@
     <!-- <ion-text routerLink="/aexercise" class="m14" style="color: #9299A3;">View All</ion-text> -->
   </div>
 
-  <div *ngFor="let exercise of program?.exercises" class="obox1 list" (click)="openExerciseModal(exercise)">
+  <div *ngFor="let exercise of program?.exercises" class="obox1 list" (click)="navigateToCamera(exercise)">
     <img [src]="exercise.thumbnail" style="height: 90px;width: 90px; border-radius: 10px;" [alt]="exercise.name"/>
     <div style="margin-left: 10px;flex: 1; ">
       <ion-text class="m15">{{exercise.name}}</ion-text>
@@ -53,28 +53,4 @@
     </div>
     <ion-icon name="play-circle-outline" style="font-size: 36px;color: var(--ion-color-primary);"/>
   </div>
-
-
-
-  <ion-modal
-  cssClass="rbsheet"
-  trigger="open-modal"
-  [initialBreakpoint]="1"
-  [breakpoints]="[0, 1]"
-  handleBehavior="cycle"
-  [canDismiss]="canDismiss"
->
-<ng-template>
-  <ion-toolbar mode="ios" class="ion-no-border">
-      <ion-title class="h1" style="color: black;">How it Works</ion-title>
-      <div class="column" style="align-items: flex-end;">
-        <ion-icon (click)="close()" name="close" style="font-size: 24px;color: #000;"/>
-      </div>
-    </ion-toolbar>
-  <ion-content class="ion-padding-start ion-padding-end" >
-
-  </ion-content>
-</ng-template>
-</ion-modal>
-
 </ion-content>

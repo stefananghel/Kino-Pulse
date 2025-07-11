@@ -136,7 +136,10 @@ const routes: Routes = [
     path: 'sworkout',
     loadChildren: () => import('./pages/Home/sworkout/sworkout.module').then( m => m.SworkoutPageModule)
   },
-
+  {
+    path: 'program/:programid/exercise/:id/camera',
+    loadChildren: () => import('./pages/Profile/camera/camera.module').then(m => m.CameraModule)
+  },
   {
     path: 'straining',
     loadChildren: () => import('./pages/Profile/straining/straining.module').then( m => m.StrainingPageModule)

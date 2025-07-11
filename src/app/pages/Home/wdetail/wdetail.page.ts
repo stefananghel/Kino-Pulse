@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProgramsService } from '../../../services/programs.service';
 import { ModalController } from '@ionic/angular';
-import { HomePage } from '../../tabs/home/home.page';
-import { Camera } from '../../Profile/camera/camera.page';
 import { ProgramDetailsService } from '../../../services/program-details.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,33 +13,11 @@ import { ProgramDetailsService } from '../../../services/program-details.service
 export class WdetailPage implements OnInit {
   program: any;
 
-  constructor(private modal: ModalController, public programsService: ProgramsService, private programDetailsService: ProgramDetailsService) { }
+  constructor(public programsService: ProgramsService, private programDetailsService: ProgramDetailsService, private router: Router) { }
 
-  async canDismiss(data?: any, role?: string) {
-    console.log('canDismiss called with data:', data, 'and role:', role);
-    return role !== 'gesture';
+  async navigateToCamera(exercise: any) {
+    this.router.navigate(['/program', this.program.id, 'exercise', exercise.id, 'camera']);
   }
-
-  async show() {
-    const modal = await this.modal.create({
-      component: Camera
-    });
-    await modal.present();
-  }
-  close() {
-    this.modal.dismiss();
-  }
-
-  async openExerciseModal(exercise: any) {
-    const modal = await this.modal.create({
-      component: Camera, 
-      componentProps: {
-        exercise: exercise
-      }
-    });
-    await modal.present();
-  }
-
 
   ngOnInit() {
     const id = window.location.pathname.split('/').pop();

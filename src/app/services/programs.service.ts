@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UserService } from './user.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,7 @@ export class ProgramsService {
   public programs: any[] = [];
 
 
-  private apiUrl = `https://test.kino.care/api/fitness/patients/${JSON.parse(localStorage.getItem('user') || '{}').id}/programs?status=open&offset=0&limit=10`;
+  private apiUrl = `${environment.apiUrl}/patients/${JSON.parse(localStorage.getItem('user') || '{}').id}/programs?status=open&offset=0&limit=10`;
   private authHeader = "Basic " + btoa(localStorage.getItem('auth') + ":" + "test");
 
   getPrograms(refresh: boolean = false): any {
