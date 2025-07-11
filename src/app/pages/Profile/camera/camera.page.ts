@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 //@ts-ignore
 import { KinoCamLib } from './KinoCamLib.js'; // Adjust the import path as necessary
 import { Pose } from '@mediapipe/pose';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProgramDetailsService } from 'src/app/services/program-details.service';
 
 @Component({
@@ -17,7 +17,11 @@ export class Camera implements OnInit {
    program: any;
    exercise: any;
 
-   constructor(private route: ActivatedRoute, private programDetailsService: ProgramDetailsService) { }
+   constructor(
+      private route: ActivatedRoute,
+      private programDetailsService: ProgramDetailsService,
+      private router: Router
+   ) { }
 
    async ngOnInit() {
       this.programId = Number(this.route.snapshot.paramMap.get('programid'));
@@ -27,7 +31,7 @@ export class Camera implements OnInit {
       if (this.programId) {
          try {
             const programDetails: any = await this.programDetailsService.getProgramDetails(this.programId);
-          
+
             this.program = programDetails.data;
             if (this.program && this.program.exercises && this.exerciseId) {
                this.exercise = this.program.exercises.find((ex: any) => ex.id === this.exerciseId);
@@ -217,4 +221,26 @@ export class Camera implements OnInit {
 
    }
 
+   handleBackNavigation() {
+
+      this.disposeVideo();
+
+      this.router.navigate(['/wdetail', this.programId]);
+   }
+
+
+   private disposeVideo() {
+      const inputVideo = document.getElementById('input_video') as HTMLVideoElement;
+      if (inputVideo && inputVideo.srcObject) {
+         const stream = inputVideo.srcObject as MediaStream;
+         stream.getTracks().forEach(track => track.stop());
+         inputVideo.srcObject = null;
+      }
+      const outputVideo = document.getElementById('output_video') as HTMLVideoElement;
+      if (outputVideo && outputVideo.srcObject) {
+         const stream = outputVideo.srcObject as MediaStream;
+         stream.getTracks().forEach(track => track.stop());
+         outputVideo.srcObject = null;
+      }
+   }
 }
