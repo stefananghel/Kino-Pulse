@@ -761,7 +761,7 @@ export class PatientKinoModel extends BaseKinoModel {
         if (this.progress_matrix.every((arr) => arr.every((v) => v === true))) {
           // this.videoElement.pause();
           // this.output_video.pause();
-          // this.testfunction("pauseCamera");
+          // this.handleCameraState("pauseCamera");
           if (document.fullscreenElement) {
             document.exitFullscreen()
           }
@@ -869,7 +869,7 @@ export class PatientKinoModel extends BaseKinoModel {
       const toadd = Array(this.max_repetitions).fill(false)
       this.progress_matrix.push(toadd)
     }
-    console.log("Progress matrix initialised")
+    console.info("[Model] Patient. Progress matrix initialised.")
   }
 
   initImages(width, height) {

@@ -123,14 +123,14 @@ const useCameraManager = ({
   };
 
   const pauseCamera = () => {
-    poseManagerRef.current?.testfunction("pauseCamera");
+    poseManagerRef.current?.handleCameraState("pauseCamera");
   };
 
   const sendStateCamera = () => {
-    poseManagerRef.current?.testfunction("initial");
+    poseManagerRef.current?.handleCameraState("initial");
   };
   const playCamera = () => {
-    poseManager?.testfunction("playCamera");
+    poseManager?.handleCameraState("playCamera");
   };
 
   /**

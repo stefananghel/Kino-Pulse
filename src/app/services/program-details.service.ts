@@ -12,8 +12,7 @@ export class ProgramDetailsService {
   getProgramDetails(programId: number, refresh: boolean = false): Promise<any> {
  
     // If program details are already fetched and not refreshing, return the cached details
-    if (this.cachedProgramDetails[programId] && !refresh) {
-      console.log('program details from cache', this.cachedProgramDetails[programId]);
+    if (this.cachedProgramDetails[programId] && !refresh) {       
       return Promise.resolve(this.cachedProgramDetails[programId]);
     }
 

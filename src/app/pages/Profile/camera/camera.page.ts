@@ -34,8 +34,7 @@ export class Camera implements OnInit {
 
             this.program = programDetails.data;
             if (this.program && this.program.exercises && this.exerciseId) {
-               this.exercise = this.program.exercises.find((ex: any) => ex.id === this.exerciseId);
-               console.log('Fetched program and exercise:', this.program, this.exercise);
+               this.exercise = this.program.exercises.find((ex: any) => ex.id === this.exerciseId); 
             }
          } catch (error) {
             console.error('Error fetching program or exercise:', error);
@@ -189,10 +188,10 @@ export class Camera implements OnInit {
          },
          modelParams: {
             pauseCamera: (pauseCamera: boolean) => {
-               console.log('Camera paused:', pauseCamera);
+               // console.info('[Camera] Paused:', pauseCamera, ".");
             },
             finishCallback: (finishCallback: () => void) => {
-               console.log('Finish callback called:', finishCallback);
+               // console.log('Finish callback called:', finishCallback);
             }
          },
       });
@@ -211,7 +210,7 @@ export class Camera implements OnInit {
             );
             newPoseManager.setup();
 
-            newPoseManager.testfunction("playCamera");
+            newPoseManager.handleCameraState("playCamera");
          })
          .catch((error) => {
             console.error('Error accessing webcam:', error);

@@ -24,8 +24,7 @@ export class WdetailPage implements OnInit {
 
     if (id) {
       this.programDetailsService.getProgramDetails(Number.parseInt(id), false).then((programDetails: any) => {
-        this.program = programDetails.data;
-        console.log('Fetched program details:', this.program);
+        this.program = programDetails.data; 
       }).catch(error => {
         console.error('Error fetching program details:', error);
       });

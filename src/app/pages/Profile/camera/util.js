@@ -44,7 +44,7 @@ export const getAnglesArray = (results, scope, returnRaw, mask) => {
     !results.poseLandmarks ||
     results.poseLandmarks.length === 0
   ) {
-    console.warn("Get Angles : No pose landmarks available.");
+    //console.warn("Get Angles : No pose landmarks available.");
     return [];
   }
 

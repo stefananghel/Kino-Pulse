@@ -99,7 +99,7 @@ export class BaseKinoModel {
     this.notificationSoundVideoPause = new Audio("assets/sounds/video_stop.mp3")
     this.longSound = new Audio("assets/sounds/long.wav")
 
-    this.testfunction = this.testfunction.bind(this)
+    this.handleCameraState = this.handleCameraState.bind(this)
 
     this.initWebSocket()
   }
@@ -109,8 +109,8 @@ export class BaseKinoModel {
     // this.initCamera()
   }
 
-  testfunction(status) {
-    console.log("Test function called with status ", status)
+  handleCameraState(status) {
+    console.info("[Model] Handle Camera State ", status)
 
     switch (status) {
       case "playCamera":
@@ -119,13 +119,13 @@ export class BaseKinoModel {
           timestamp: Date.now(),
         }
 
-        console.log("Sending start message", socketStartMessage);
+        console.info("[Model] Sending WS Message", socketStartMessage.action, "...");
 
         if (this.socket.readyState !== WebSocket.OPEN) {
           console.error("WebSocket is not open. Current state:", this.socket.readyState);
 
           setTimeout(() => {
-            this.testfunction("playCamera");
+            this.handleCameraState("playCamera");
           }, 1000);
           return;
         }
@@ -184,7 +184,7 @@ export class BaseKinoModel {
   }
 
   initPose() {
-    console.log("Init Pose")
+    console.info("[Model] Init Pose.")
     this.pose = this.poseInstance
 
     const xhr = new XMLHttpRequest()
@@ -225,7 +225,7 @@ export class BaseKinoModel {
     if (this.socket) {
       this.socket.close(3001)
     } else {
-      console.log("Socket Initialised")
+      console.info("[Socket] Initialised.")
       this.socket = new WebSocket(url)
       this.socket.onopen = () => {
         // const socketStartMessage = {
@@ -342,7 +342,7 @@ export class BaseKinoModel {
     // });
 
     this.videoElement.addEventListener("playing", () => {
-      console.log("input video playing")
+      console.log("[Model] Input Video Playing.")
       // if (!this.exerciseStarted) {
       requestAnimationFrame(this.processFrame.bind(this))
       // }

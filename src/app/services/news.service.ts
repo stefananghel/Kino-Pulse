@@ -10,8 +10,7 @@ export class NewsService {
   private authHeader = "Basic " + btoa(localStorage.getItem('auth') + ":" + "test");
 
   getNews(refresh: boolean = false): any {
-    if (this.news.length > 0 && !refresh) {
-      console.log('news from cache', this.news);
+    if (this.news.length > 0 && !refresh) { 
       return Promise.resolve(this.news);
     }
 
@@ -23,8 +22,7 @@ export class NewsService {
     })
       .then(response => response.json())
       .then(data => {
-        this.news = data;
-        console.log('news from fetch', this.news);
+        this.news = data;   
         return this.news;
       })
       .catch(error => {

@@ -52,7 +52,7 @@ export interface PoseManager {
   toggleSkeleton?: (value: boolean) => void;
   toggleAngles?: (value: boolean) => void;
   toggleJointNames?: (value: boolean) => void;
-  testfunction(status: string): void;
+  handleCameraState(status: string): void;
 }
 
 export interface KinoCamLibParams {

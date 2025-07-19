@@ -127,12 +127,12 @@ export class WalkthroughKinoModel extends BaseKinoModel {
 
       var shoulderDistance = Math.round(
         100 *
-          euclideanDistance(
-            filteredLandmarks[POSE_LANDMARKS.LEFT_SHOULDER].x,
-            filteredLandmarks[POSE_LANDMARKS.LEFT_SHOULDER].y,
-            filteredLandmarks[POSE_LANDMARKS.RIGHT_SHOULDER].x,
-            filteredLandmarks[POSE_LANDMARKS.RIGHT_SHOULDER].y
-          )
+        euclideanDistance(
+          filteredLandmarks[POSE_LANDMARKS.LEFT_SHOULDER].x,
+          filteredLandmarks[POSE_LANDMARKS.LEFT_SHOULDER].y,
+          filteredLandmarks[POSE_LANDMARKS.RIGHT_SHOULDER].x,
+          filteredLandmarks[POSE_LANDMARKS.RIGHT_SHOULDER].y
+        )
       );
 
       if (shoulderDistance <= 10) {
@@ -257,7 +257,7 @@ export class WalkthroughKinoModel extends BaseKinoModel {
                 map,
               }))
               .filter(({ map }) => map && map.has(POSE_CONNECTIONS[i][0]));
-          } catch (error) {}
+          } catch (error) { }
 
           if (anglesArray !== undefined && anglesArray.length > 0) {
             const index = anglesArray[0].index;
@@ -363,9 +363,9 @@ export class WalkthroughKinoModel extends BaseKinoModel {
               -this.canvasWidth + 10 * this.widthRatio,
               0 + 10 * this.widthRatio,
               (this.orientationImageMap[this.initialOrientation].width * 3) /
-                this.widthRatio,
+              this.widthRatio,
               (this.orientationImageMap[this.initialOrientation].height * 3) /
-                this.widthRatio
+              this.widthRatio
             );
           }
           this.canvasCtx.shadowColor = "transparent";
@@ -512,9 +512,9 @@ export class WalkthroughKinoModel extends BaseKinoModel {
               -this.canvasWidth + 10 * this.widthRatio,
               0 + 10 * this.widthRatio,
               (this.orientationImageMap[this.wOrientation].width * 3) /
-                this.widthRatio,
+              this.widthRatio,
               (this.orientationImageMap[this.wOrientation].height * 3) /
-                this.widthRatio
+              this.widthRatio
             );
           }
           this.canvasCtx.shadowColor = "transparent";
@@ -552,9 +552,9 @@ export class WalkthroughKinoModel extends BaseKinoModel {
     if (target_lmarks !== undefined && state === "exercise") {
       if (
         target_lmarks[TARGET_LMARK_MAPPING.indexOf(POSE_CONNECTIONS[i][0])] ===
-          true ||
+        true ||
         target_lmarks[TARGET_LMARK_MAPPING.indexOf(POSE_CONNECTIONS[i][1])] ===
-          true
+        true
       ) {
         startLandmark = filteredLandmarks[POSE_CONNECTIONS[i][0]];
         endLandmark = filteredLandmarks[POSE_CONNECTIONS[i][1]];
@@ -565,9 +565,9 @@ export class WalkthroughKinoModel extends BaseKinoModel {
           canvasCtx.beginPath();
           canvasCtx.arc(
             filteredLandmarks[TARGET_LMARK_MAPPING[i]].x *
-              canvasCtx.canvas.width,
+            canvasCtx.canvas.width,
             filteredLandmarks[TARGET_LMARK_MAPPING[i]].y *
-              canvasCtx.canvas.height,
+            canvasCtx.canvas.height,
             bulaRadius * 1.5,
             0,
             2 * Math.PI
@@ -851,7 +851,7 @@ export class WalkthroughKinoModel extends BaseKinoModel {
         if (this.progress_matrix.every((arr) => arr.every((v) => v === true))) {
           // this.videoElement.pause();
           // this.output_video.pause();
-          // this.testfunction("pauseCamera");
+          // this.handleCameraState("pauseCamera");
           if (document.fullscreenElement) {
             document.exitFullscreen();
           }
@@ -955,7 +955,7 @@ export class WalkthroughKinoModel extends BaseKinoModel {
       const toadd = Array(this.max_repetitions).fill(false);
       this.progress_matrix.push(toadd);
     }
-    console.log("Progress matrix initialised");
+    console.log("[Model] Walkthrough. Progress matrix initialised.")
   }
 
   initImages(width, height) {
@@ -1018,9 +1018,8 @@ export class WalkthroughKinoModel extends BaseKinoModel {
     for (let i = 0; i < numImages; i++) {
       const image = new Image();
       image.crossOrigin = "anonymous";
-      image.src = `https://resources.kino.care/images/speed/stages.php?totalSegments=${numImages}&completed=${
-        i + 1
-      }`;
+      image.src = `https://resources.kino.care/images/speed/stages.php?totalSegments=${numImages}&completed=${i + 1
+        }`;
       repImageArray.push(image);
     }
     return repImageArray;

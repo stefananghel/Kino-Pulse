@@ -19,8 +19,7 @@ class KinoCamLib {
     return KinoCamLib.instance;
   }
 
-  static getModelClass(kinoModelType) {
-    console.log("kinoModelType", kinoModelType);
+  static getModelClass(kinoModelType) {    
     switch (kinoModelType) {
       case "patient":
         return PatientKinoModel;
@@ -50,7 +49,7 @@ class KinoCamLib {
    * @returns {KinoModel} The KinoModel instance
    * */
   static createKinoModel(params) {
-    console.log("KinoCamLib.createKinoModel", params);
+    console.info("[KinoCamLib]", params.kinoModelType.toUpperCase(), " model creation started.");
     if (!params || !params.kinoModelType) {
       throw new Error("Invalid parameters for creating KinoModel instance");
     }

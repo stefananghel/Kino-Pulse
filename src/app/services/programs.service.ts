@@ -14,10 +14,8 @@ export class ProgramsService {
   private authHeader = "Basic " + btoa(localStorage.getItem('auth') + ":" + "test");
 
   getPrograms(refresh: boolean = false): any {
-    console.log(localStorage.getItem('auth'));
     // If programs are already fetched and not refreshing, return the cached programs
-    if (this.programs.length > 0 && !refresh) {
-      console.log('programs from cache', this.programs);
+    if (this.programs.length > 0 && !refresh) { 
       return Promise.resolve(this.programs);
     }
 
@@ -29,8 +27,9 @@ export class ProgramsService {
     })
       .then(response => response.json())
       .then(data => {
-        this.programs = data.data.items || [];
+        this.programs = (data.data && data.data.items) ? data.data.items : [];
         return this.programs;
+
       })
       .catch(error => {
         console.error('Error fetching programs:', error);
@@ -39,5 +38,5 @@ export class ProgramsService {
 
   }
 
-  constructor() {}
+  constructor() { }
 }
