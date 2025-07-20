@@ -1,5 +1,3 @@
-import * as Pose from "@mediapipe/pose";
-console.log(Pose);
 import { BaseKinoModel } from "./BaseKinoModel";
 import { POSE_CONNECTIONS, TARGET_LMARK_MAPPING } from "./constants";
 import {

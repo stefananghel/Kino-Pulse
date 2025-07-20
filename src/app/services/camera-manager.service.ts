@@ -68,8 +68,7 @@ export class CameraManagerService {
   handlePoseResults(results: any) {
     // Draw pose landmarks or handle results as needed
     // Example: draw on a canvas overlay (not shown here)
-    // You can port drawUtil.js logic here
-    // console.log('Pose results:', results);
+    // You can port drawUtil.js logic here 
   }
 
   // Add play/pause and other exercise/camera logic as needed

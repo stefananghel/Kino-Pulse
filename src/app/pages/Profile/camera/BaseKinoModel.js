@@ -9,7 +9,7 @@ import {
 } from "./constants"
 import { compareAngles, flashPage, playAudio, playAudioElement } from "./util"
 import { drawArch } from "./drawUtil"
- 
+
 
 window.initialPause = 0
 export class BaseKinoModel {
@@ -217,7 +217,7 @@ export class BaseKinoModel {
     // let hostName = ""
     this.wsConnect(
       hostName +
-        `/backend/socket/${this.account.id}/${this.selectedExercise.id}?api_key=${this.account.api_key}&practice=${this.isPracticeRun}`,
+      `/backend/socket/${this.account.id}/${this.selectedExercise.id}?api_key=${this.account.api_key}&practice=${this.isPracticeRun}`,
     )
   }
 
@@ -291,7 +291,7 @@ export class BaseKinoModel {
       this.nativeWidth = window.innerWidth
       this.nativeHeight = Math.round(window.innerWidth / aspectRatio)
     }
- 
+
     // Set canvas size to match video aspect ratio, but do NOT set video element's width/height
     this.canvasElement.width = this.nativeWidth * 3
     this.canvasElement.height = this.nativeHeight * 3
@@ -346,6 +346,10 @@ export class BaseKinoModel {
       // if (!this.exerciseStarted) {
       requestAnimationFrame(this.processFrame.bind(this))
       // }
+    })
+
+    this.videoElement.addEventListener("pause", () => {
+      console.log("[Model] Input Video Paused.") 
     })
 
     // Capture stream from canvas and set to output video element

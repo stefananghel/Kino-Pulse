@@ -17,8 +17,7 @@ export class TrainingPage implements OnInit {
   news: any = {};
   aboutAssessmentArticle: any = {};
 
-  async canDismiss(data?: any, role?: string) {
-    console.log('canDismiss called with data:', data, 'and role:', role);
+  async canDismiss(data?: any, role?: string) { 
     return role !== 'gesture';
   }
 
@@ -30,15 +29,13 @@ export class TrainingPage implements OnInit {
   }
 
   ngOnInit() {
-    this.programsService.getPrograms(false).then((programs: any[]) => {
-      console.log(programs);
+    this.programsService.getPrograms(false).then((programs: any[]) => { 
       this.programs = programs;
     });
 
     this.newsService.getNews().then((news: any[]) => {
       this.news = news || [];
-      this.aboutAssessmentArticle = this.news.news.find((item: any) => item.title === 'How assessment works');
-      // console.log(this.aboutAssessmentArticle.description);
+      this.aboutAssessmentArticle = this.news.news.find((item: any) => item.title === 'How assessment works');     
     });
   }
 

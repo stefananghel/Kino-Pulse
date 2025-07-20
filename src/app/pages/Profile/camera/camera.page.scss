@@ -41,6 +41,26 @@
   top: 0;
 }
 
+.full-screen-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.centered-play-btn {
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+  text-align: center;
+}
+
 @media (orientation: portrait) {
   .output_video {
     width: 100vw;

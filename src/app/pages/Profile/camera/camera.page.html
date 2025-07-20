@@ -6,17 +6,29 @@
     <div class="ion-text-center">
       <ion-title class="m16">{{ exercise?.name }}</ion-title>
     </div>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="camera-content">
 
-  <!-- Video input element -->
-  <video id="input_video"   class="input_video h-0.5 opacity-0" crossorigin="anonymous" autoplay controls playsinline></video>
+  <div id="full-screen-container" class="full-screen-container">
+    <div *ngIf="showOverlay" class="centered-play-btn">
+      <ion-button fill="clear" (click)="startSession()">
+        <ion-icon name="play-circle-outline" slot="icon-only"
+          style="font-size: 2.5em; color: var(--ion-color-primary);"></ion-icon>
+      </ion-button>
+    </div>
 
-  <!-- Video output element -->
-  <video id="output_video" class="output_video" crossorigin="anonymous" autoplay controls></video>
-  <!-- Canvas output element -->
-  <canvas id="output_canvas" class="output_canvas"></canvas> 
- 
+    <!-- Video input element -->
+    <video id="input_video" class="input_video h-0.5 opacity-0" crossorigin="anonymous" autoplay controls
+      playsinline></video>
+
+    <!-- Video output element -->
+    <video id="output_video" class="output_video" crossorigin="anonymous" autoplay controls></video>
+    <!-- Canvas output element -->
+    <canvas id="output_canvas" class="output_canvas"></canvas>
+  </div>
+
 </ion-content>
+ 

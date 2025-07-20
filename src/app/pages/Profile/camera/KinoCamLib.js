@@ -49,7 +49,7 @@ class KinoCamLib {
    * @returns {KinoModel} The KinoModel instance
    * */
   static createKinoModel(params) {
-    console.info("[KinoCamLib]", params.kinoModelType.toUpperCase(), " model creation started.");
+    console.info("[KinoCamLib]", params.kinoModelType.toUpperCase(), "Model Creation Started.");
     if (!params || !params.kinoModelType) {
       throw new Error("Invalid parameters for creating KinoModel instance");
     }
