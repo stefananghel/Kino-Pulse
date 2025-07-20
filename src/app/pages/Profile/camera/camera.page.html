@@ -21,14 +21,13 @@
     </div>
 
     <!-- Video input element -->
-    <video id="input_video" class="input_video h-0.5 opacity-0" crossorigin="anonymous" autoplay controls
-      playsinline></video>
+    <video id="input_video" class="input_video h-0.5 opacity-0" crossorigin="anonymous" autoplay playsinline
+      (click)="togglePauseVideo()"></video>
 
     <!-- Video output element -->
-    <video id="output_video" class="output_video" crossorigin="anonymous" autoplay controls></video>
+    <video id="output_video" class="output_video" (click)="togglePauseVideo()" crossorigin="anonymous" autoplay></video>
     <!-- Canvas output element -->
     <canvas id="output_canvas" class="output_canvas"></canvas>
   </div>
 
 </ion-content>
- 

@@ -19,12 +19,18 @@ export class Camera implements OnInit {
    exercise: any;
    newPoseManager: any;
    showOverlay: boolean = true; // Overlay state
+   cameraInitializedWithIntro: boolean = false; // Tracks if camera was initialized with intro
 
    constructor(
       private route: ActivatedRoute,
       private programDetailsService: ProgramDetailsService,
       private router: Router
    ) { }
+
+   ngOnDestroy() {
+      console.info('[Camera] Cleaning up resources on destroy.');
+      HtmlVideoHandler.disposeVideos();
+   }
 
    async ngOnInit() {
       this.programId = Number(this.route.snapshot.paramMap.get('programid'));
@@ -37,7 +43,7 @@ export class Camera implements OnInit {
             this.program = programDetails.data;
             if (this.program && this.program.exercises && this.exerciseId) {
                this.exercise = this.program.exercises.find((ex: any) => ex.id === this.exerciseId);
-             
+
             }
          } catch (error) {
             console.error('Error fetching program or exercise:', error);
@@ -210,24 +216,35 @@ export class Camera implements OnInit {
    }
 
    startSession() {
-  
-      this.showOverlay = false; // Hide overlay when play is pressed
-      HtmlVideoHandler.playIntroThenSwitchToCamera(
-         'output_video',
-         this.exercise.videoUrl,
-         (stream) => {
-            this.newPoseManager.startVideoStream(stream, 640, 360);
-            this.newPoseManager.setup();
-            this.newPoseManager.handleCameraState("pauseCamera");
-            HtmlVideoHandler.pauseCamera();
-            // Show overlay again when video is paused
-            const videoElement = document.getElementById('input_video') as HTMLVideoElement;
-            if (videoElement) {
-               videoElement.onpause = () => {
-                  this.showOverlay = true;
-               };
+      // Only request fullscreen here, triggered by play button click
+      HtmlVideoHandler.requestFullscreenForContainer();
+      console.info('[Camera] Starting session with exercise:', this.cameraInitializedWithIntro);
+      if (!this.cameraInitializedWithIntro) {
+         console.info('[Camera] Camera already initialized with intro video.');
+         this.showOverlay = false;
+         this.cameraInitializedWithIntro = true;
+         HtmlVideoHandler.playIntroThenSwitchToCamera(
+            'output_video',
+            this.exercise.videoUrl,
+            (stream) => {
+               this.newPoseManager.startVideoStream(stream, 640, 360);
+               this.newPoseManager.setup();
+               this.newPoseManager.handleCameraState("pauseCamera");
+               console.info('[Camera] Camera stream started successfully.');
+               HtmlVideoHandler.togglePauseVideos();
             }
-         }
-      );
+         );
+      }
+      else {
+         this.togglePauseVideo();
+      }
+   }
+
+   togglePauseVideo() {
+      const paused = HtmlVideoHandler.togglePauseVideos();
+      if (paused) {
+         HtmlVideoHandler.exitFullscreenForContainer();
+      }
+      this.showOverlay = paused;
    }
 }

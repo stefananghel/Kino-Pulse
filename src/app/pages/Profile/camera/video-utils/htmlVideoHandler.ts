@@ -21,18 +21,7 @@ export class HtmlVideoHandler {
         HtmlVideoHandler.stopAndDispose(outputVideo);
     }
 
-    static pauseCamera() {
-        const inputVideo = document.getElementById('input_video') as HTMLVideoElement;
-        if (inputVideo && !inputVideo.paused) {
-            console.info('[Camera] Input Video Paused.');
-            inputVideo.pause();
-        }
-        const outputVideo = document.getElementById('output_video') as HTMLVideoElement;
-        if (outputVideo && !outputVideo.paused) {
-            console.info('[Camera] Output Video Paused.');
-            outputVideo.pause();
-        }
-    }
+
 
     static setupCameraStream(videoElementId: string, onStream: (stream: MediaStream) => void, onError?: (error: any) => void) {
         const videoElement = document.getElementById(videoElementId) as HTMLVideoElement;
@@ -52,7 +41,9 @@ export class HtmlVideoHandler {
             });
     }
 
-    static playIntroThenSwitchToCamera(videoElementId: string, introVideoUrl: string, onCameraStream: (stream: MediaStream) => void, onError?: (error: any) => void) {
+    static playIntroThenSwitchToCamera(videoElementId: string, introVideoUrl: string,
+        onCameraStream: (stream: MediaStream) => void,
+        onError?: (error: any) => void) {
         const videoElement = document.getElementById(videoElementId) as HTMLVideoElement;
         if (!videoElement) {
             console.error('Video element not found');
@@ -89,6 +80,55 @@ export class HtmlVideoHandler {
         });
 
         videoElement.onended = switchToCameraStream;
+    }
+
+    static togglePauseVideos(): boolean {
+
+        const inputVideo = document.getElementById('input_video') as HTMLVideoElement;
+        const outputVideo = document.getElementById('output_video') as HTMLVideoElement;
+
+        var inputVideoIsPlaying = inputVideo.currentTime > 0 && !inputVideo.paused && !inputVideo.ended
+            && inputVideo.readyState > inputVideo.HAVE_CURRENT_DATA;
+        var outputVideoIsPlaying = outputVideo.currentTime > 0 && !outputVideo.paused && !outputVideo.ended
+            && outputVideo.readyState > outputVideo.HAVE_CURRENT_DATA;
+
+        let paused = !inputVideoIsPlaying;
+        if (inputVideo && !inputVideo.paused && inputVideoIsPlaying) {
+            inputVideo.pause();
+            paused = true;
+        } else if (inputVideo) {
+            inputVideo.play();
+            paused = false;
+        }
+        if (outputVideo && !outputVideo.paused && outputVideoIsPlaying) {
+            outputVideo.pause();
+            paused = true;
+        } else if (outputVideo) {
+            outputVideo.play();
+            paused = false;
+        }
+        return paused;
+    }
+
+    static requestFullscreenForContainer() {
+        const container = document.getElementById('full-screen-container');
+        if (container) {
+            if (container.requestFullscreen) {
+                container.requestFullscreen();
+            } else if ((container as any).webkitRequestFullscreen) {
+                (container as any).webkitRequestFullscreen();
+            }
+        }
+    }
+
+    static exitFullscreenForContainer() {
+        if (document.fullscreenElement || (document as any).webkitFullscreenElement) {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if ((document as any).webkitExitFullscreen) {
+                (document as any).webkitExitFullscreen();
+            }
+        }
     }
 
 }
