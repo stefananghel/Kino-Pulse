@@ -1,6 +1,9 @@
 export class HtmlVideoHandler {
     static stopAndDispose(videoElement: HTMLVideoElement | null) {
         if (videoElement && videoElement.srcObject) {
+            // Pause the video before disposing
+            try { videoElement.pause(); } catch (e) { }
+            videoElement.onerror = null;
             const stream = videoElement.srcObject as MediaStream;
             stream.getTracks().forEach(track => track.stop());
             videoElement.srcObject = null;
@@ -87,10 +90,7 @@ export class HtmlVideoHandler {
         const inputVideo = document.getElementById('input_video') as HTMLVideoElement;
         const outputVideo = document.getElementById('output_video') as HTMLVideoElement;
 
-        var inputVideoIsPlaying = inputVideo.currentTime > 0 && !inputVideo.paused && !inputVideo.ended
-            && inputVideo.readyState > inputVideo.HAVE_CURRENT_DATA;
-        var outputVideoIsPlaying = outputVideo.currentTime > 0 && !outputVideo.paused && !outputVideo.ended
-            && outputVideo.readyState > outputVideo.HAVE_CURRENT_DATA;
+        var { inputVideoIsPlaying, outputVideoIsPlaying } = HtmlVideoHandler.getVideoIsPlaying(inputVideo, outputVideo);
 
         let paused = !inputVideoIsPlaying;
         if (inputVideo && !inputVideo.paused && inputVideoIsPlaying) {
@@ -108,6 +108,14 @@ export class HtmlVideoHandler {
             paused = false;
         }
         return paused;
+    }
+
+    static getVideoIsPlaying(inputVideo: HTMLVideoElement, outputVideo: HTMLVideoElement) {
+        var inputVideoIsPlaying = inputVideo.currentTime > 0 && !inputVideo.paused && !inputVideo.ended
+            && inputVideo.readyState > inputVideo.HAVE_CURRENT_DATA;
+        var outputVideoIsPlaying = outputVideo.currentTime > 0 && !outputVideo.paused && !outputVideo.ended
+            && outputVideo.readyState > outputVideo.HAVE_CURRENT_DATA;
+        return { inputVideoIsPlaying, outputVideoIsPlaying };
     }
 
     static requestFullscreenForContainer() {

@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 //@ts-ignore
 import { KinoCamLib } from './KinoCamLib.js'; // Adjust the import path as necessary
-import { Pose } from '@mediapipe/pose';
+import { getCachedPose } from './pose-utils/pose-cache';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProgramDetailsService } from 'src/app/services/program-details.service';
 import { HtmlVideoHandler } from './video-utils/htmlVideoHandler';
@@ -28,11 +28,17 @@ export class Camera implements OnInit {
    ) { }
 
    ngOnDestroy() {
+      // Remove fullscreen listeners
+      document.removeEventListener('fullscreenchange', this.fullscreenChangeHandler);
+      document.removeEventListener('webkitfullscreenchange', this.fullscreenChangeHandler);
       console.info('[Camera] Cleaning up resources on destroy.');
       HtmlVideoHandler.disposeVideos();
    }
 
    async ngOnInit() {
+      // Listen for fullscreen changes
+      document.addEventListener('fullscreenchange', this.fullscreenChangeHandler);
+      document.addEventListener('webkitfullscreenchange', this.fullscreenChangeHandler);
       this.programId = Number(this.route.snapshot.paramMap.get('programid'));
       this.exerciseId = Number(this.route.snapshot.paramMap.get('id'));
 
@@ -171,19 +177,7 @@ export class Camera implements OnInit {
             ]
          };
          const cameraId = "default_camera_id";
-         const configPose = {
-            modelComplexity: 1,
-            smoothLandmarks: true,
-            minDetectionConfidence: 0.5,
-            minTrackingConfidence: 0.8,
-            selfieMode: false,
-            enableSegmentation: false,
-            smoothSegmentation: false,
-         };
-         let newPoseModel = new Pose({
-            locateFile: (file) => `https://resources.kino.care/scripts/libs/${file}`,
-         });
-         newPoseModel.setOptions(configPose as any);
+         let newPoseModel = getCachedPose();
          this.newPoseManager = KinoCamLib.createKinoModel({
             kinoModelType: 'patient',
             selectedExercise: this.exercise,
@@ -247,4 +241,22 @@ export class Camera implements OnInit {
       }
       this.showOverlay = paused;
    }
+
+   private fullscreenChangeHandler = () => {
+      console.info('[Camera] Fullscreen change detected.');
+      const container = document.getElementById('full-screen-container');
+      const isFullscreen =
+         document.fullscreenElement === container ||
+         (document as any).webkitFullscreenElement === container;
+      if (!isFullscreen) {
+         const inputVideo = document.getElementById('input_video') as HTMLVideoElement;
+         const outputVideo = document.getElementById('output_video') as HTMLVideoElement;
+         var { inputVideoIsPlaying, outputVideoIsPlaying } = HtmlVideoHandler.getVideoIsPlaying(inputVideo, outputVideo);
+         if (inputVideoIsPlaying || outputVideoIsPlaying) {
+            console.info('[Camera] Exiting fullscreen, toggling pause on videos.');
+            const paused = HtmlVideoHandler.togglePauseVideos();
+            this.showOverlay = paused;
+         }
+      }
+   };
 }
